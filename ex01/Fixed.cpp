@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/15 17:39:43 by anasr            ###   ########.fr       */
+/*   Updated: 2022/04/15 18:10:31 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ Fixed::Fixed()
 {
 	std::cout << "Default constructor called\n";
 	value = 0;
+}
+
+Fixed::Fixed(const int input)
+{
+	//check negative
+	value = input;
+	value <<= 8;
+}
+
+Fixed::Fixed(const float input)
+{
+	//check negative
+	
 }
 
 Fixed::Fixed(const Fixed& original)
