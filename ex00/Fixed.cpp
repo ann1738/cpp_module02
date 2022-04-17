@@ -6,7 +6,7 @@
 /*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/17 11:01:45 by ann              ###   ########.fr       */
+/*   Updated: 2022/04/16 11:37:14 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,20 @@
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called\n";
-	fixedPtValue = 0;
-}
-
-Fixed::Fixed(const int input)
-{
-	//check negative?
-	fixedPtValue = input;
-	fixedPtValue <<= 8;
-}
-
-Fixed::Fixed(const float input)
-{
-	
+	value = 0;
 }
 
 Fixed::Fixed(const Fixed& original)
 {
 	std::cout << "Copy constructer is called\n";
-	this->fixedPtValue = original.fixedPtValue;
+	this->value = original.value;
 }
 
 Fixed& Fixed::operator=(const Fixed& original)
 {
 	std::cout << "Copy assignment operator called\n";
-	this->fixedPtValue = original.fixedPtValue;
+	this->value = original.value;
 	return (*this);
-}
-
-std::ostream& Fixed::operator<<(std::ostream& console_out)
-{
-	console_out << this->fixedPtValue;
-	return (console_out);
 }
 
 Fixed::~Fixed()
@@ -57,26 +39,10 @@ Fixed::~Fixed()
 int Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called\n";
-	return (fixedPtValue);
+	return (value);
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	fixedPtValue = raw;
-}
-
-int Fixed::toInt( void ) const
-{
-	return (fixedPtValue >> 8);
-}
-//seeeeeeeemmmmmmmmmmmmmmmmmmmmmmm
-
-int Fixed::toInt( void ) const
-{
-	return (fixedPtValue >> 8);
-}
-
-float toFloat( void ) const
-{
-	~
+	value = raw;
 }
