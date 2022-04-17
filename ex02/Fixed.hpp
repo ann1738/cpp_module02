@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:36:22 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/17 15:23:22 by anasr            ###   ########.fr       */
+/*   Updated: 2022/04/17 17:33:42 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ public:
 	int toInt(void) const;
 	float toFloat(void) const;
 
+	//comparison operators
+	
+	//arithmetic operators
+	Fixed& operator+(const Fixed& other_f);
+	Fixed& operator-(const Fixed& other_f);
+	Fixed& operator*(const Fixed& other_f);
+	Fixed& operator/(const Fixed& other_f);
+	
+	
+	//increment/decrement
+	Fixed& operator++(void);
+	Fixed& operator++(int);
+
+	Fixed& operator--(void);
 };
 
 std::ostream& operator<<(std::ostream& console_out, const Fixed& current_fixed);

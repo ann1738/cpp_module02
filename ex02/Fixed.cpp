@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/17 15:27:28 by anasr            ###   ########.fr       */
+/*   Updated: 2022/04/17 17:35:56 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ Fixed::Fixed(const int input)
 {
 	std::cout << "Int constructor called\n";
 	fixedPtValue = input;
-	fixedPtValue <<= 8;
+	fixedPtValue <<= fracBits;
 }
 
 Fixed::Fixed(const float input)
 {
 	std::cout << "Float constructor called\n";
-	fixedPtValue = roundf(input * (float)(1 << 8));
+	fixedPtValue = roundf(input * (float)(1 << fracBits));
 }
 
 //Methods from ex00
@@ -76,12 +76,12 @@ void Fixed::setRawBits(int const raw)
 
 int Fixed::toInt(void) const
 {
-	return (fixedPtValue >> 8);
+	return (fixedPtValue >> fracBits);
 }
 
 float Fixed::toFloat(void) const
 {
-	return ((float)fixedPtValue / (float)(1 << 8));
+	return ((float)fixedPtValue / (float)(1 << fracBits));
 }
 
 //insertion operator "<<" overloading
@@ -90,4 +90,57 @@ std::ostream& operator<<(std::ostream& console_out, const Fixed& current_fixed)
 {
 	console_out << current_fixed.toFloat();
 	return (console_out);
+}
+
+//arithmetic operators
+// Fixed& Fixed::operator+(const Fixed& other_f)
+// {
+// 	Fixed result;
+// 	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
+// 	return ((Fixed &)result);
+// }
+
+// Fixed& Fixed::operator-(const Fixed& other_f)
+// {
+// 	Fixed result;
+// 	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
+// 	return ((Fixed &)result);
+// }
+
+// Fixed& Fixed::operator*(const Fixed& other_f)
+// {
+// 	Fixed result;
+// 	result.fixedPtValue = this->fixedPtValue * other_f.fixedPtValue;
+// 	return ((Fixed &)result);
+// }
+
+// Fixed& Fixed::operator/(const Fixed& other_f)
+// {
+// 	Fixed result;
+// 	result.fixedPtValue = this->fixedPtValue / other_f.fixedPtValue;
+// 	return ((Fixed &)result);
+// }
+
+//increment/decrement
+
+//pre-increment
+Fixed& Fixed::operator++(void)
+{
+	this->fixedPtValue += 1;
+	return (*this);
+}
+
+//post-increment
+Fixed& Fixed::operator++(int i)
+{
+	(void)i;
+	Fixed temp = *this;
+	++(this->fixedPtValue);
+	
+	return (temp);
+}
+Fixed& Fixed::operator--(void)
+{
+	this->fixedPtValue -= 1;
+	return (*this);
 }
