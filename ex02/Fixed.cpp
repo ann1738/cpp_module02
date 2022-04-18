@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/17 17:35:56 by anasr            ###   ########.fr       */
+/*   Updated: 2022/04/18 11:26:54 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,34 +92,37 @@ std::ostream& operator<<(std::ostream& console_out, const Fixed& current_fixed)
 	return (console_out);
 }
 
-//arithmetic operators
-// Fixed& Fixed::operator+(const Fixed& other_f)
-// {
-// 	Fixed result;
-// 	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
-// 	return ((Fixed &)result);
-// }
+// arithmetic operators
+Fixed& Fixed::operator+(const Fixed& other_f)
+{
+	Fixed result(*this);
+	// Fixed result;
+	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
+	return ((Fixed &)result);
+}
 
-// Fixed& Fixed::operator-(const Fixed& other_f)
-// {
-// 	Fixed result;
-// 	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
-// 	return ((Fixed &)result);
-// }
+Fixed& Fixed::operator-(const Fixed& other_f)
+{
+	Fixed result(*this);
+	// Fixed result;
+	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
+	return ((Fixed &)result);
+}
 
-// Fixed& Fixed::operator*(const Fixed& other_f)
-// {
-// 	Fixed result;
-// 	result.fixedPtValue = this->fixedPtValue * other_f.fixedPtValue;
-// 	return ((Fixed &)result);
-// }
+Fixed& Fixed::operator*(const Fixed& other_f)
+{
+	Fixed result(*this);
+	// Fixed result;
+	result.fixedPtValue = (int)((((long long)this->fixedPtValue) * ((long long)other_f.fixedPtValue)) >> fracBits);
+	return ((Fixed &)result);
+}
 
-// Fixed& Fixed::operator/(const Fixed& other_f)
-// {
-// 	Fixed result;
-// 	result.fixedPtValue = this->fixedPtValue / other_f.fixedPtValue;
-// 	return ((Fixed &)result);
-// }
+Fixed& Fixed::operator/(const Fixed& other_f)
+{
+	Fixed result(*this);
+	result.fixedPtValue = (int)(((long long)(this->fixedPtValue) << fracBits) / other_f.fixedPtValue);
+	return ((Fixed &)result);
+}
 
 //increment/decrement
 
