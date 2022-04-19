@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:19:37 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/18 13:32:17 by anasr            ###   ########.fr       */
+/*   Updated: 2022/04/19 23:05:45 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ public:
 	Point();
 	Point(const float f1, const float f2);
 	Point(const Point& original);
-	Point& operator=(const Point& original);
+	Point&	operator=(const Point& original);
+	Fixed	sideLength(const Point& p1, const Point& p2);
+	Fixed	areaOfTriangle(const Fixed& a, const Fixed& b, const Fixed& c);
 	~Point();
 };
 
