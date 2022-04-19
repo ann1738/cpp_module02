@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/18 11:26:54 by ann              ###   ########.fr       */
+/*   Updated: 2022/04/19 14:58:06 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called\n";
+	// std::cout << "Default constructor called\n";
 	fixedPtValue = 0;
 }
 
@@ -24,7 +24,7 @@ Fixed::Fixed()
 
 Fixed::Fixed(const Fixed& original)
 {
-	std::cout << "Copy constructer is called\n";
+	// std::cout << "Copy constructer is called\n";
 	this->fixedPtValue = original.fixedPtValue;
 }
 
@@ -32,7 +32,7 @@ Fixed::Fixed(const Fixed& original)
 
 Fixed& Fixed::operator=(const Fixed& original)
 {
-	std::cout << "Copy assignment operator called\n";
+	// std::cout << "Copy assignment operator called\n";
 	this->fixedPtValue = original.fixedPtValue;
 	return (*this);
 }
@@ -41,21 +41,21 @@ Fixed& Fixed::operator=(const Fixed& original)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+	// std::cout << "Destructor called\n";
 }
 
 //Additional constructors
 
 Fixed::Fixed(const int input)
 {
-	std::cout << "Int constructor called\n";
+	// std::cout << "Int constructor called\n";
 	fixedPtValue = input;
 	fixedPtValue <<= fracBits;
 }
 
 Fixed::Fixed(const float input)
 {
-	std::cout << "Float constructor called\n";
+	// std::cout << "Float constructor called\n";
 	fixedPtValue = roundf(input * (float)(1 << fracBits));
 }
 
@@ -63,7 +63,7 @@ Fixed::Fixed(const float input)
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
+	// std::cout << "getRawBits member function called\n";
 	return (fixedPtValue);
 }
 
@@ -92,36 +92,68 @@ std::ostream& operator<<(std::ostream& console_out, const Fixed& current_fixed)
 	return (console_out);
 }
 
+//comparison operators
+bool Fixed::operator>(const Fixed& other_f)
+{
+	return ((this->fixedPtValue > other_f.fixedPtValue) ? true : false);
+}
+
+bool Fixed::operator>=(const Fixed& other_f)
+{
+	return ((this->fixedPtValue >= other_f.fixedPtValue) ? true : false);
+}
+
+bool Fixed::operator<(const Fixed& other_f)
+{
+	return ((this->fixedPtValue < other_f.fixedPtValue) ? true : false);
+}
+
+bool Fixed::operator<=(const Fixed& other_f)
+{
+	return ((this->fixedPtValue <= other_f.fixedPtValue) ? true : false);
+}
+
+bool Fixed::operator==(const Fixed& other_f)
+{
+	return ((this->fixedPtValue == other_f.fixedPtValue) ? true : false);
+}
+
+bool Fixed::operator!=(const Fixed& other_f)
+{
+	return ((this->fixedPtValue != other_f.fixedPtValue) ? true : false);
+}
+
 // arithmetic operators
-Fixed& Fixed::operator+(const Fixed& other_f)
+
+Fixed Fixed::operator+(const Fixed& other_f)
 {
-	Fixed result(*this);
-	// Fixed result;
+	Fixed result;
 	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
-	return ((Fixed &)result);
+
+	return (result);
 }
 
-Fixed& Fixed::operator-(const Fixed& other_f)
+Fixed Fixed::operator-(const Fixed& other_f)
 {
-	Fixed result(*this);
-	// Fixed result;
-	result.fixedPtValue = this->fixedPtValue + other_f.fixedPtValue;
-	return ((Fixed &)result);
+	Fixed result;
+	result.fixedPtValue = this->fixedPtValue - other_f.fixedPtValue;
+
+	return (result);
 }
 
-Fixed& Fixed::operator*(const Fixed& other_f)
+Fixed Fixed::operator*(const Fixed& other_f)
 {
-	Fixed result(*this);
-	// Fixed result;
-	result.fixedPtValue = (int)((((long long)this->fixedPtValue) * ((long long)other_f.fixedPtValue)) >> fracBits);
-	return ((Fixed &)result);
+	Fixed result;
+	result.fixedPtValue = (int)((((long long)this->fixedPtValue) * ((long long)other_f.fixedPtValue))\
+								>> fracBits);
+	return (result);
 }
 
-Fixed& Fixed::operator/(const Fixed& other_f)
+Fixed Fixed::operator/(const Fixed& other_f)
 {
-	Fixed result(*this);
+	Fixed result;
 	result.fixedPtValue = (int)(((long long)(this->fixedPtValue) << fracBits) / other_f.fixedPtValue);
-	return ((Fixed &)result);
+	return (result);
 }
 
 //increment/decrement
@@ -134,7 +166,7 @@ Fixed& Fixed::operator++(void)
 }
 
 //post-increment
-Fixed& Fixed::operator++(int i)
+Fixed Fixed::operator++(int i)
 {
 	(void)i;
 	Fixed temp = *this;
@@ -142,8 +174,40 @@ Fixed& Fixed::operator++(int i)
 	
 	return (temp);
 }
+
+//pre-decrement
 Fixed& Fixed::operator--(void)
 {
 	this->fixedPtValue -= 1;
 	return (*this);
+}
+//post-decrement
+float Fixed::operator--(int i)
+{
+	(void)i;
+	Fixed temp = *this;
+	--(this->fixedPtValue);
+	
+	return ((float)temp.fixedPtValue / (float)(1 << fracBits));
+}
+
+//static member functions
+Fixed& Fixed::min(Fixed &f1, Fixed &f2)
+{
+	return ((f1.fixedPtValue <= f2.fixedPtValue) ? f1 : f2);
+}
+
+Fixed& Fixed::min(const Fixed &f1, const Fixed &f2)
+{
+	return ((f1.fixedPtValue <= f2.fixedPtValue) ? (Fixed&)f1 : (Fixed&)f2);
+}
+
+Fixed& Fixed::max(Fixed &f1, Fixed &f2)
+{
+	return ((f1.fixedPtValue >= f2.fixedPtValue) ? f1 : f2);
+}
+
+Fixed& Fixed::max(const Fixed &f1, const Fixed &f2)
+{
+	return ((f1.fixedPtValue >= f2.fixedPtValue) ? (Fixed&)f1 : (Fixed&)f2);
 }
