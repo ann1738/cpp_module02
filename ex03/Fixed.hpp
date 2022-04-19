@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:36:22 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/19 17:40:41 by anasr            ###   ########.fr       */
+/*   Updated: 2022/04/19 13:37:32 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ public:
 	Fixed& operator++(void);
 	Fixed operator++(int);
 	Fixed& operator--(void);
-	Fixed operator--(int i);
+	float operator--(int i);
 
 	//static member functions
 	static Fixed& min(Fixed &f1, Fixed &f2);
