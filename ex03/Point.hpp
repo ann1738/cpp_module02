@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:19:37 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/19 23:05:45 by ann              ###   ########.fr       */
+/*   Updated: 2022/04/20 15:18:40 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ public:
 	Point&	operator=(const Point& original);
 	Fixed	sideLength(const Point& p1, const Point& p2);
 	Fixed	areaOfTriangle(const Fixed& a, const Fixed& b, const Fixed& c);
+	Fixed	getX();
+	Fixed	getY();
+	bool	pointOnLine(const Point& point, const Point& a, const Point& b);
+	bool	checkSameAsVertix(const Point& point, const Point& a);
 	~Point();
 };
 

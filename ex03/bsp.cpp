@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:31:49 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/20 13:00:48 by ann              ###   ########.fr       */
+/*   Updated: 2022/04/20 15:28:32 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
 	Fixed ab, ac, bc, ap, bp, cp;
 
+	if (((Point)point).checkSameAsVertix(point, a) || ((Point)point).checkSameAsVertix(point, b) \
+		|| ((Point)point).checkSameAsVertix(point, c))
+		return (false);
+	if (((Point)point).pointOnLine(point, a, b) /*|| ((Point)point).pointOnLine(point, a, c) \
+		|| ((Point)point).pointOnLine(point, b, c)*/)
+		return (false);
 	ab = ((Point)a).sideLength(a, b);
 	ac = ((Point)a).sideLength(a, c);
 	bc = ((Point)b).sideLength(b, c);
@@ -33,6 +39,6 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	std::cout << "apc area is " << apc << std::endl;
 	pbc =  ((Point)a).areaOfTriangle(bp, bc, cp);
 	std::cout << "pbc area is " << pbc << std::endl;
-
-	return (abc == (abp + apc + pbc) ? true : false);
+	std::cout << abp + apc + pbc << std::endl;
+	return ((abp + apc + pbc) >= (abc - 0.05f) && (abp + apc + pbc) <= (abc + 0.05f) ? true : false);
 }
