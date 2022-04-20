@@ -6,7 +6,7 @@
 /*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:31:49 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/19 23:38:06 by ann              ###   ########.fr       */
+/*   Updated: 2022/04/20 13:00:48 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	Fixed abc, abp, apc, pbc;
 
 	abc =  ((Point)a).areaOfTriangle(ab, bc, ac);
-	abp =  ((Point)a).areaOfTriangle(ab, bp, cp);
+	std::cout << "abc area is " << abc << std::endl;
+	abp =  ((Point)a).areaOfTriangle(ab, bp, ap);
+	std::cout << "abp area is " << abp << std::endl;
 	apc =  ((Point)a).areaOfTriangle(ap, cp, ac);
+	std::cout << "apc area is " << apc << std::endl;
 	pbc =  ((Point)a).areaOfTriangle(bp, bc, cp);
+	std::cout << "pbc area is " << pbc << std::endl;
 
 	return (abc == (abp + apc + pbc) ? true : false);
 }
