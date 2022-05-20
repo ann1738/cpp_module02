@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/19 14:58:06 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/20 19:13:32 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Fixed::Fixed(const int input)
 Fixed::Fixed(const float input)
 {
 	// std::cout << "Float constructor called\n";
-	fixedPtValue = roundf(input * (float)(1 << fracBits));
+	fixedPtValue = (input * (float)(1 << fracBits));
 }
 
 //Methods from ex00

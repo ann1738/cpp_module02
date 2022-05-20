@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/16 11:37:14 by ann              ###   ########.fr       */
+/*   Updated: 2022/05/20 15:33:50 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+//Orthodox Canonical Requirements
 
 Fixed::Fixed()
 {
@@ -36,6 +38,8 @@ Fixed::~Fixed()
 	std::cout << "Destructor called\n";
 }
 
+//Other member functions
+
 int Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called\n";
@@ -44,5 +48,6 @@ int Fixed::getRawBits( void ) const
 
 void Fixed::setRawBits( int const raw )
 {
+	std::cout << "setRawBits member function called\n";
 	value = raw;
 }

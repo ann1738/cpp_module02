@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:29:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/19 17:35:22 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/20 18:56:31 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(void)
 		std::cout << "\n\e[95m*** COMPARISON OPERATORS TEST ***\e[0m\n";
 		//  ">" and "<"
 		Fixed big(100.333f);
-		Fixed small(100.2f);
+		Fixed small(100.331f);
 		if (big > small)
 			std::cout << big << " is bigger than " << small << std:: endl;
 		else
@@ -44,8 +44,8 @@ int	main(void)
 		else
 			std::cout << small << " is smaller than " << big << std:: endl;
 		//  ">=" and "<="
-		big = Fixed(100.0f);
-		small = Fixed(100.0f);
+		big = Fixed(100.1f);
+		small = Fixed(100.1f);
 		if (big >= small)
 			std::cout << big << " is bigger/equal than " << small << std:: endl;
 		else
