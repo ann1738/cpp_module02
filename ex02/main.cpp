@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:29:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/05/20 18:56:31 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/22 19:45:31 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ int	main(void)
 		std::cout << "\e[95m*** SUBJECT FILE TEST ***\e[0m\n";
 		Fixed a;
 		Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+		
 		std::cout << a << std::endl;
 		std::cout << ++a << std::endl;
 		std::cout << a << std::endl;
 		std::cout << a++ << std::endl;
 		std::cout << a << std::endl;
+	
 		std::cout << b << std::endl;
+	
 		std::cout << Fixed::max( a, b ) << std::endl;
 	}
 	/* COMPARISON OPERATORS */

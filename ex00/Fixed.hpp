@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:36:22 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/16 11:36:29 by ann              ###   ########.fr       */
+/*   Updated: 2022/05/22 19:25:33 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed
 {
 private:
-	int					value;
+	int					fixedPtValue;
 	static const int	fracBits = 8;
 public:
 	Fixed();

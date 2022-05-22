@@ -6,50 +6,48 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/05/20 19:13:32 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/22 19:34:48 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-//Constructor
+/* Orthodox Canonical Form Requirements */
 
+// default constructor
 Fixed::Fixed()
 {
 	// std::cout << "Default constructor called\n";
 	fixedPtValue = 0;
 }
 
-//Copy constructor
-
+// copy constructor
 Fixed::Fixed(const Fixed& original)
 {
 	// std::cout << "Copy constructer is called\n";
 	this->fixedPtValue = original.fixedPtValue;
 }
 
-//Assignment operator overloading
-
+// copy assignment operator overloading
 Fixed& Fixed::operator=(const Fixed& original)
 {
 	// std::cout << "Copy assignment operator called\n";
-	this->fixedPtValue = original.fixedPtValue;
+	if (this != &original)
+		this->fixedPtValue = original.fixedPtValue;
 	return (*this);
 }
 
-//Destructor
-
+// destructor
 Fixed::~Fixed()
 {
 	// std::cout << "Destructor called\n";
 }
 
-//Additional constructors
+/* Additional Constructors */
 
 Fixed::Fixed(const int input)
 {
 	// std::cout << "Int constructor called\n";
-	fixedPtValue = input;
 	fixedPtValue <<= fracBits;
 }
 
@@ -59,7 +57,7 @@ Fixed::Fixed(const float input)
 	fixedPtValue = (input * (float)(1 << fracBits));
 }
 
-//Methods from ex00
+/* Methods From ex00 */
 
 int Fixed::getRawBits(void) const
 {
@@ -72,7 +70,7 @@ void Fixed::setRawBits(int const raw)
 	fixedPtValue = raw;
 }
 
-//New methods
+/* Methods From ex01 */
 
 int Fixed::toInt(void) const
 {
@@ -85,12 +83,13 @@ float Fixed::toFloat(void) const
 }
 
 //insertion operator "<<" overloading
-
 std::ostream& operator<<(std::ostream& console_out, const Fixed& current_fixed)
 {
 	console_out << current_fixed.toFloat();
 	return (console_out);
 }
+
+/* Operator Overloading */
 
 //comparison operators
 bool Fixed::operator>(const Fixed& other_f)
@@ -124,7 +123,6 @@ bool Fixed::operator!=(const Fixed& other_f)
 }
 
 // arithmetic operators
-
 Fixed Fixed::operator+(const Fixed& other_f)
 {
 	Fixed result;
@@ -155,8 +153,6 @@ Fixed Fixed::operator/(const Fixed& other_f)
 	result.fixedPtValue = (int)(((long long)(this->fixedPtValue) << fracBits) / other_f.fixedPtValue);
 	return (result);
 }
-
-//increment/decrement
 
 //pre-increment
 Fixed& Fixed::operator++(void)
@@ -191,7 +187,8 @@ float Fixed::operator--(int i)
 	return ((float)temp.fixedPtValue / (float)(1 << fracBits));
 }
 
-//static member functions
+/* Static Member Functions */
+
 Fixed& Fixed::min(Fixed &f1, Fixed &f2)
 {
 	return ((f1.fixedPtValue <= f2.fixedPtValue) ? f1 : f2);

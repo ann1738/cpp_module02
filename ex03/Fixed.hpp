@@ -6,7 +6,7 @@
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:36:22 by anasr             #+#    #+#             */
-/*   Updated: 2022/04/19 13:37:32 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/22 19:41:04 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ public:
 	
 	//increment/decrement
 	Fixed& operator++(void);
-	Fixed operator++(int);
+	Fixed operator++(int i);
 	Fixed& operator--(void);
 	float operator--(int i);
 
