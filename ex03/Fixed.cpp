@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:40:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/05/22 19:34:48 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/23 10:51:20 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Fixed::~Fixed()
 Fixed::Fixed(const int input)
 {
 	// std::cout << "Int constructor called\n";
-	fixedPtValue <<= fracBits;
+	fixedPtValue = input << fracBits;
 }
 
 Fixed::Fixed(const float input)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 17:29:59 by anasr             #+#    #+#             */
-/*   Updated: 2022/05/22 18:27:10 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/23 11:13:39 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	Point a(0.0f, 0.0f);
 	Point b(0.0f, 3.0f);
 	Point c(3.0f, 0.0f);
-	Point p(0.0f, 3.0f);
+	Point p(0.0f, 0.0f);
 
 	/* calling the function that will test if the point is inside the triangle */
 	if (bsp(a, b, c, p))
@@ -28,9 +28,9 @@ int	main(void)
 	return (0);
 
 	/* testing copy constructor */
-	// Point p(a);
+	// Point p(b);
 
 	/* testing copy constructor */
 	// Point p;
-	// p = a;
+	// p = c;
 }

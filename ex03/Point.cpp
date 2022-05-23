@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:22:34 by anasr             #+#    #+#             */
-/*   Updated: 2022/05/22 18:27:40 by anasr            ###   ########.fr       */
+/*   Updated: 2022/05/23 11:02:18 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ Point& Point::operator=(const Point& original)
 	// std::cout << "Copy assignment operator is called\n";
 	if (this != &original)
 	{
-		(Fixed)(this->x) = original.x;
-		(Fixed)(this->y) = original.y;
-		// std::cout << "Copy assignment operator is called : " << "x is " <<  this->x << ", and y is " << this->y << std::endl;
+		const_cast<Fixed&>(this->x) = original.x;
+		const_cast<Fixed&>(this->y) = original.y;
 	}
 	return (*this);
 }
